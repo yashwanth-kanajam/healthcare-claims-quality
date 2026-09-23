@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68,<76"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "healthcare-claims-quality"
+version = "0.3.0"
+description = "Synthetic claims quality checks, spending reconciliation, and utilization analytics"
+requires-python = ">=3.11"
+dependencies = ["duckdb==1.4.3"]
+
+[project.optional-dependencies]
+test = ["pytest==8.4.2"]
+tableau = ["tableauhyperapi==0.0.26479"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[project.scripts]
+claims-quality = "claims_quality.__main__:main"
+
+[tool.setuptools.package-data]
+claims_quality = ["sql/*.sql"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+src = ["src", "tests"]
+extend-exclude = [".venv*", "build", "dist", "work", "dashboard", "reports"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# Analyst-guidance and limitation strings are emitted verbatim into generated
+# Markdown reports; rewrapping them would change the generated output bytes.
+"src/claims_quality/workflow.py" = ["E501"]
+"src/claims_quality/report.py" = ["E501"]
+"src/claims_quality/expanded.py" = ["E501"]
+"src/claims_quality/dashboard.py" = ["E501"]

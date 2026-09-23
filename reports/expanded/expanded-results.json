@@ -1,0 +1,3088 @@
+{
+  "seeds": [
+    17,
+    101,
+    202,
+    303
+  ],
+  "scenarios": [
+    "duplicate_member",
+    "duplicate_provider",
+    "duplicate_enrollment",
+    "duplicate_line",
+    "orphan_enrollment",
+    "orphan_member",
+    "orphan_line",
+    "orphan_line_provider",
+    "enrollment_reversed",
+    "line_reversed",
+    "member_born_after_service",
+    "missing_claim_lines",
+    "negative_header_payment",
+    "line_billed_below_allowed",
+    "overlapping_header_failures",
+    "missing_provider_cascade",
+    "valid_equal_dates",
+    "valid_multiday_claim"
+  ],
+  "aggregate_metrics": [
+    {
+      "category": "exact_duplicate",
+      "tp": 32,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "category": "broken_foreign_key",
+      "tp": 236,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "category": "invalid_date_sequence",
+      "tp": 28,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "category": "financial_reconciliation",
+      "tp": 28,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  ],
+  "runs": [
+    {
+      "seed": 17,
+      "scenario": "duplicate_member",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "duplicate_provider",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "duplicate_enrollment",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "duplicate_line",
+      "events": 1,
+      "expected_units": 3,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "orphan_enrollment",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "orphan_member",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "orphan_line",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "orphan_line_provider",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "enrollment_reversed",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "line_reversed",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "member_born_after_service",
+      "events": 1,
+      "expected_units": 4,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "missing_claim_lines",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "negative_header_payment",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "line_billed_below_allowed",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "overlapping_header_failures",
+      "events": 1,
+      "expected_units": 3,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "missing_provider_cascade",
+      "events": 1,
+      "expected_units": 40,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 40,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "valid_equal_dates",
+      "events": 1,
+      "expected_units": 0,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 17,
+      "scenario": "valid_multiday_claim",
+      "events": 1,
+      "expected_units": 0,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "duplicate_member",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "duplicate_provider",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "duplicate_enrollment",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "duplicate_line",
+      "events": 1,
+      "expected_units": 3,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "orphan_enrollment",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "orphan_member",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "orphan_line",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "orphan_line_provider",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "enrollment_reversed",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "line_reversed",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "member_born_after_service",
+      "events": 1,
+      "expected_units": 4,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "missing_claim_lines",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "negative_header_payment",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "line_billed_below_allowed",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "overlapping_header_failures",
+      "events": 1,
+      "expected_units": 3,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "missing_provider_cascade",
+      "events": 1,
+      "expected_units": 64,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 64,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "valid_equal_dates",
+      "events": 1,
+      "expected_units": 0,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 101,
+      "scenario": "valid_multiday_claim",
+      "events": 1,
+      "expected_units": 0,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "duplicate_member",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "duplicate_provider",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "duplicate_enrollment",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "duplicate_line",
+      "events": 1,
+      "expected_units": 3,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "orphan_enrollment",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "orphan_member",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "orphan_line",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "orphan_line_provider",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "enrollment_reversed",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "line_reversed",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "member_born_after_service",
+      "events": 1,
+      "expected_units": 4,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "missing_claim_lines",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "negative_header_payment",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "line_billed_below_allowed",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "overlapping_header_failures",
+      "events": 1,
+      "expected_units": 3,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "missing_provider_cascade",
+      "events": 1,
+      "expected_units": 64,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 64,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "valid_equal_dates",
+      "events": 1,
+      "expected_units": 0,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 202,
+      "scenario": "valid_multiday_claim",
+      "events": 1,
+      "expected_units": 0,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "duplicate_member",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "duplicate_provider",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "duplicate_enrollment",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "duplicate_line",
+      "events": 1,
+      "expected_units": 3,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "orphan_enrollment",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "orphan_member",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "orphan_line",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "orphan_line_provider",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "enrollment_reversed",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "line_reversed",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "member_born_after_service",
+      "events": 1,
+      "expected_units": 4,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "missing_claim_lines",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "negative_header_payment",
+      "events": 1,
+      "expected_units": 1,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "line_billed_below_allowed",
+      "events": 1,
+      "expected_units": 2,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "overlapping_header_failures",
+      "events": 1,
+      "expected_units": 3,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "missing_provider_cascade",
+      "events": 1,
+      "expected_units": 48,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 48,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "valid_equal_dates",
+      "events": 1,
+      "expected_units": 0,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "seed": 303,
+      "scenario": "valid_multiday_claim",
+      "events": 1,
+      "expected_units": 0,
+      "metrics": [
+        {
+          "category": "exact_duplicate",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "broken_foreign_key",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "invalid_date_sequence",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "category": "financial_reconciliation",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        }
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    }
+  ]
+}

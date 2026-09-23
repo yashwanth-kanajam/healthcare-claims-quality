@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+.DS_Store
+work/
+outputs/
+build/
+dist/
+
+# Tableau local recovery files
+*.twbr
+dashboard/evaluation/
+.ruff_cache/
+.venv*/

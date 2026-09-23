@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='utf-8'?>
+<workbook version="9.3" source-platform="mac" source-build="2026.2.2 (20262.26.0819.2015)">
+  <preferences />
+  <datasources>
+    <datasource name="claims" caption="Reconciled synthetic claims" inline="true" version="9.3">
+      <connection directory="Data" filename="dashboard.csv" server="" class="textscan">
+        <relation name="dashboard.csv" table="[dashboard#csv]" type="table">
+          <columns header="yes" separator="," locale="en_US" character-set="UTF-8">
+            <column name="panel" datatype="string" ordinal="0" />
+            <column name="label" datatype="string" ordinal="1" />
+            <column name="value" datatype="real" ordinal="2" />
+            <column name="unit" datatype="string" ordinal="3" />
+          </columns>
+        </relation>
+      </connection>
+      <aliases enabled="yes" />
+      <column name="[panel]" datatype="string" role="dimension" type="nominal" />
+      <column name="[label]" datatype="string" role="dimension" type="nominal" />
+      <column name="[value]" datatype="real" role="measure" type="quantitative" />
+      <column name="[unit]" datatype="string" role="dimension" type="nominal" />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name="Reconciliation — USD">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize="12" bold="true">Reconciliation — USD</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource name="claims" caption="Reconciled synthetic claims" />
+          </datasources>
+          <datasource-dependencies datasource="claims">
+            <column name="[panel]" datatype="string" role="dimension" type="nominal" />
+            <column name="[label]" datatype="string" role="dimension" type="nominal" caption="Category" />
+            <column name="[value]" datatype="real" role="measure" type="quantitative" />
+            <column name="[unit]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[panel]" derivation="None" name="[none:panel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[label]" derivation="None" name="[none:label:nk]" pivot="key" type="nominal" />
+            <column-instance column="[value]" derivation="Sum" name="[sum:value:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter column="[claims].[none:panel:nk]" class="categorical">
+            <groupfilter function="member" level="[none:panel:nk]" member="&quot;Reconciliation&quot;" />
+          </filter>
+          <slices>
+            <column>[claims].[none:panel:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="mark">
+            <format attr="mark-labels-show" value="true" />
+          </style-rule>
+          <style-rule element="axis">
+            <format attr="title" field="[claims].[sum:value:qk]" scope="cols" value="Paid amount (USD)" class="0" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings />
+          </pane>
+        </panes>
+        <rows>[claims].[none:label:nk]</rows>
+        <cols>[claims].[sum:value:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name="Monthly paid — USD">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize="12" bold="true">Monthly paid — USD</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource name="claims" caption="Reconciled synthetic claims" />
+          </datasources>
+          <datasource-dependencies datasource="claims">
+            <column name="[panel]" datatype="string" role="dimension" type="nominal" />
+            <column name="[label]" datatype="string" role="dimension" type="nominal" caption="Category" />
+            <column name="[value]" datatype="real" role="measure" type="quantitative" />
+            <column name="[unit]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[panel]" derivation="None" name="[none:panel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[label]" derivation="None" name="[none:label:nk]" pivot="key" type="nominal" />
+            <column-instance column="[value]" derivation="Sum" name="[sum:value:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter column="[claims].[none:panel:nk]" class="categorical">
+            <groupfilter function="member" level="[none:panel:nk]" member="&quot;Monthly paid&quot;" />
+          </filter>
+          <slices>
+            <column>[claims].[none:panel:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="mark">
+            <format attr="mark-labels-show" value="true" />
+          </style-rule>
+          <style-rule element="axis">
+            <format attr="title" field="[claims].[sum:value:qk]" scope="cols" value="Paid amount (USD)" class="0" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings />
+          </pane>
+        </panes>
+        <rows>[claims].[none:label:nk]</rows>
+        <cols>[claims].[sum:value:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name="Age cohort — paid per member-month">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize="12" bold="true">Age cohort — paid per member-month</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource name="claims" caption="Reconciled synthetic claims" />
+          </datasources>
+          <datasource-dependencies datasource="claims">
+            <column name="[panel]" datatype="string" role="dimension" type="nominal" />
+            <column name="[label]" datatype="string" role="dimension" type="nominal" caption="Category" />
+            <column name="[value]" datatype="real" role="measure" type="quantitative" />
+            <column name="[unit]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[panel]" derivation="None" name="[none:panel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[label]" derivation="None" name="[none:label:nk]" pivot="key" type="nominal" />
+            <column-instance column="[value]" derivation="Sum" name="[sum:value:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter column="[claims].[none:panel:nk]" class="categorical">
+            <groupfilter function="member" level="[none:panel:nk]" member="&quot;Cohort PMPM&quot;" />
+          </filter>
+          <slices>
+            <column>[claims].[none:panel:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="mark">
+            <format attr="mark-labels-show" value="true" />
+          </style-rule>
+          <style-rule element="axis">
+            <format attr="title" field="[claims].[sum:value:qk]" scope="cols" value="Paid per member-month (USD)" class="0" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings />
+          </pane>
+        </panes>
+        <rows>[claims].[none:label:nk]</rows>
+        <cols>[claims].[sum:value:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name="Expanded evaluation — true-positive units">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize="12" bold="true">Expanded evaluation — true-positive units</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource name="claims" caption="Reconciled synthetic claims" />
+          </datasources>
+          <datasource-dependencies datasource="claims">
+            <column name="[panel]" datatype="string" role="dimension" type="nominal" />
+            <column name="[label]" datatype="string" role="dimension" type="nominal" caption="Category" />
+            <column name="[value]" datatype="real" role="measure" type="quantitative" />
+            <column name="[unit]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[panel]" derivation="None" name="[none:panel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[label]" derivation="None" name="[none:label:nk]" pivot="key" type="nominal" />
+            <column-instance column="[value]" derivation="Sum" name="[sum:value:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter column="[claims].[none:panel:nk]" class="categorical">
+            <groupfilter function="member" level="[none:panel:nk]" member="&quot;Quality findings&quot;" />
+          </filter>
+          <slices>
+            <column>[claims].[none:panel:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="mark">
+            <format attr="mark-labels-show" value="true" />
+          </style-rule>
+          <style-rule element="axis">
+            <format attr="title" field="[claims].[sum:value:qk]" scope="cols" value="True-positive units" class="0" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings />
+          </pane>
+        </panes>
+        <rows>[claims].[none:label:nk]</rows>
+        <cols>[claims].[sum:value:qk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name="Claims quality and utilization">
+      <style />
+      <size maxheight="900" maxwidth="1200" minheight="900" minwidth="1200" />
+      <zones>
+        <zone id="1" x="1500" y="1000" w="97000" h="14000" type-v2="text">
+          <formatted-text>
+            <run fontsize="16" bold="true">SYNTHETIC CLAIMS | 2024
+Reconciled paid: $15,905.27  •  Enrolled member-months: 288
+Controlled simulation. No clinical or real-payer performance claims.</run>
+          </formatted-text>
+        </zone>
+        <zone id="2" name="Reconciliation — USD" x="1500" y="17000" w="47500" h="37000" />
+        <zone id="3" name="Monthly paid — USD" x="50500" y="17000" w="47500" h="37000" />
+        <zone id="4" name="Age cohort — paid per member-month" x="1500" y="56000" w="47500" h="37000" />
+        <zone id="5" name="Expanded evaluation — true-positive units" x="50500" y="56000" w="47500" h="37000" />
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows>
+    <window name="Claims quality and utilization" maximized="true" class="dashboard">
+      <viewpoints>
+        <viewpoint name="Reconciliation — USD">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Monthly paid — USD">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Age cohort — paid per member-month">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Expanded evaluation — true-positive units">
+          <zoom type="entire-view" />
+        </viewpoint>
+      </viewpoints>
+      <active id="-1" />
+    </window>
+  </windows>
+</workbook>
