@@ -24,9 +24,9 @@ python3 -m venv .venv
 
 Open `work/tableau-build/Claims_Quality_Public.twbx`. The CSV-only `Claims_Quality.twbx` is retained for Tableau Desktop; Tableau Public requires the extract-backed package.
 
-The official Hyper API dependency is pinned and usage telemetry is disabled. The converter reads every extracted value back and compares it with the CSV before packaging. Hyper binaries may contain internal metadata and are not claimed to be byte-identical across builds. Installation was checked on macOS arm64 with Python 3.9.6; other platforms remain unverified.
+The official Hyper API dependency is pinned and usage telemetry is disabled. The converter reads every extracted value back and compares it with the CSV before packaging. Hyper binaries may contain internal metadata and are not claimed to be byte-identical across builds. Installation was checked on macOS arm64 with Python 3.11.5; other platforms remain unverified.
 
-## Acceptance
+## Workbook verification
 
 The extract-backed workbook opens and all four panels render in Tableau Public 2026.2.2. Financial, monthly, cohort and evaluation values reconcile to the source results. See the [validation summary](../reports/VALIDATION_SUMMARY.md).
 

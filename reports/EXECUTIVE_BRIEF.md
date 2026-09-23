@@ -26,4 +26,4 @@ No automatic record deletion, clinical decision or financial recovery is recomme
 
 ## What the dashboard does not establish
 
-Observed cohort differences and zero-claim months are artifacts of synthetic generation. They do not establish unmet need, provider performance, patient behavior, seasonal demand or savings. The dashboard file and SQL-backed inputs are prepared; actual Tableau rendering remains a separate acceptance gate until confirmed.
+Observed cohort differences and zero-claim months are artifacts of synthetic generation. They do not establish unmet need, provider performance, patient behavior, seasonal demand or savings. The workbook was opened in Tableau Public 2026.2.2 and all four panels render; that rendering check is separate from the numerical reconciliation behind it.

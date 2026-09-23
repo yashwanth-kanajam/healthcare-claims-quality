@@ -2,7 +2,7 @@
 
 **A claims reporting pipeline can produce entirely plausible financial totals that are wrong.** This project builds the validation and reconciliation controls that catch that before the numbers reach a report.
 
-**All data are synthetic.** No real members, providers, patient information, employer data, or genuine healthcare coding. This is an analytical data-quality exercise — not clinical adjudication, fraud detection, or a production payer system.
+**All data are synthetic.** No real members, providers, patient information, employer data, or genuine healthcare coding. This is a controlled synthetic data-quality analysis — not clinical adjudication, fraud detection, or a payer system.
 
 ## Key finding
 
@@ -60,7 +60,7 @@ The generator produces a clean baseline, validates invariants against it indepen
 
 Utilization uses explicit enrollment denominators. Member-months count distinct enrolled member/calendar-month combinations, so overlapping coverage cannot double-count. Cohort rates are recomputed as summed numerator over summed denominator — never an unweighted average of two rates.
 
-Further detail: [architecture](docs/ARCHITECTURE.md), [walkthrough](docs/WALKTHROUGH.md), [validation protocol](docs/VALIDATION.md).
+Further detail: [architecture](docs/ARCHITECTURE.md), [technical notes](docs/TECHNICAL_NOTES.md), [validation protocol](docs/VALIDATION.md).
 
 ## Reproduce
 
@@ -101,6 +101,6 @@ The fixture is small and deterministic by design, so every expected result can b
 
 November and December show zero claims because the generator limits service starts to the first 300 days of 2024. That is a property of the fixture, not a seasonal pattern, and must not be read as one. Apparent cohort, provider or monthly differences are likewise generator artifacts.
 
-Claims are not visits, and these outputs should never be relabelled as visit counts. Payment lags are fixed rather than modelled. No real medical adjudication, payer rules, clinical validation, fraud detection, or real-world model performance is represented.
+Claims are not visits, and these outputs should never be relabeled as visit counts. Payment lags are fixed rather than modeled. No real medical adjudication, payer rules, clinical validation, fraud detection, or real-world model performance is represented.
 
 See [limitations](docs/LIMITATIONS.md) for the full list.
