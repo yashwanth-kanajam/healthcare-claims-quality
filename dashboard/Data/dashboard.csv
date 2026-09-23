@@ -1,0 +1,22 @@
+panel,label,value,unit
+Reconciliation,Incorrect header-line join,37011.02,USD
+Reconciliation,Correct header total,15905.27,USD
+Reconciliation,Correct line total,15905.27,USD
+Monthly paid,2024-01,1187.09,USD
+Monthly paid,2024-02,1046.97,USD
+Monthly paid,2024-03,461.35,USD
+Monthly paid,2024-04,1542.64,USD
+Monthly paid,2024-05,2107.12,USD
+Monthly paid,2024-06,924.36,USD
+Monthly paid,2024-07,2246.25,USD
+Monthly paid,2024-08,1602.08,USD
+Monthly paid,2024-09,2464.39,USD
+Monthly paid,2024-10,2323.02,USD
+Monthly paid,2024-11,0.0,USD
+Monthly paid,2024-12,0.0,USD
+Cohort PMPM,55 and over,54.897333333333336,USD per member-month
+Cohort PMPM,Under 55,55.461845238095236,USD per member-month
+Quality findings,Exact duplicates,32,record-category-run units
+Quality findings,Broken references,236,record-category-run units
+Quality findings,Invalid date sequences,28,record-category-run units
+Quality findings,Financial reconciliation,28,record-category-run units

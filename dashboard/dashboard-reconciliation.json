@@ -1,0 +1,10 @@
+{
+  "seed": 17,
+  "claims": 101,
+  "members": 24,
+  "member_months": 288,
+  "paid_cents": 1590527,
+  "paid_per_member_month": 55.22663194444445,
+  "claims_per_1000_member_months": 350.69444444444446,
+  "tableau_rendering_verified": false
+}
