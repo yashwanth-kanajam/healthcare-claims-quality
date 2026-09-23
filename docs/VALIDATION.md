@@ -2,7 +2,7 @@
 
 ## Tested environment
 
-Python 3.9.6, macOS arm64, DuckDB 1.4.3, pytest 8.4.2. Direct dependencies are pinned in `requirements-dev.txt`; `requirements-lock.txt` captures the full tested environment. Both source-checkout and installed-package workflows are supported; installed execution is tested outside the checkout. Other operating systems are unverified.
+Python 3.11.5, macOS arm64, DuckDB 1.4.3, pytest 8.4.2. Direct dependencies are pinned in `requirements-dev.txt`; `requirements-lock.txt` captures the full tested environment. Both source-checkout and installed-package workflows are supported; installed execution is tested outside the checkout. Other operating systems are unverified.
 
 ## Reproduce
 
@@ -13,7 +13,7 @@ python3 -m venv .venv
 PYTHONPATH=src .venv/bin/python -m claims_quality report --out work/reproduced-reports
 ```
 
-Compare the generated `RESULTS.md` and `results.json` byte-for-byte with `reports/`. For an exact Python-3.9 dependency set, install `requirements-lock.txt` instead of the direct-dependency file. For a newer Python interpreter, the direct dependency file lets pip select compatible pytest transitive dependencies.
+Compare the generated `RESULTS.md` and `results.json` byte-for-byte with `reports/`. Both files reproduce exactly on the tested environment. To pin the full transitive set rather than let pip resolve it, install `requirements-lock.txt` instead of the direct-dependency file.
 
 ## Evaluation population and units
 

@@ -1,7 +1,7 @@
 """Export SQL-backed Tableau inputs and a self-contained local workbook.
 
-Workbook XML is generated, not rendered here. Desktop opening remains a separate
-acceptance check; XML/ZIP checks cannot certify Tableau rendering.
+Workbook XML is generated, not rendered here. Opening the workbook is a separate
+check; XML/ZIP validation cannot certify Tableau rendering.
 """
 
 import csv

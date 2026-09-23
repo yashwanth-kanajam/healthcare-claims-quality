@@ -16,4 +16,4 @@
 
 ## Extended analysis boundaries
 
-Utilization eligibility is an analytical filter under the synthetic contract, not a fifth quality category or a real benefit determination. A claim must fit one enrollment span. Adjacent spans are not merged. The dashboard does not establish seasonality, cohort causality or clinical validity. Tableau XML/ZIP validation and reconciled source numbers do not prove rendering; desktop acceptance is tracked separately in dashboard/README.md.
+Utilization eligibility is an analytical filter under the synthetic contract, not a fifth quality category or a real benefit determination. A claim must fit one enrollment span. Adjacent spans are not merged. The dashboard does not establish seasonality, cohort causality or clinical validity. Tableau XML/ZIP validation and reconciled source numbers do not prove rendering; the workbook rendering check is recorded separately in dashboard/README.md.

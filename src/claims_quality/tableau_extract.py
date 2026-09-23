@@ -1,7 +1,7 @@
 """Package an existing dashboard with a local Hyper extract for Tableau Public.
 
-No Tableau account, publishing API, or upload is used. Native rendering remains
-a separate acceptance check even when the extracted values reconcile.
+No Tableau account, publishing API, or upload is used. Native rendering is a
+separate check even when the extracted values reconcile.
 """
 
 import csv
