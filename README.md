@@ -2,13 +2,13 @@
 
 **A claims reporting pipeline can produce entirely plausible financial totals that are wrong.** This project builds the validation and reconciliation controls that catch that before the numbers reach a report.
 
-**All data are synthetic.** No real members, providers, patient information, employer data, or genuine healthcare coding. This is a controlled synthetic data-quality analysis — not clinical adjudication, fraud detection, or a payer system.
+**All data are synthetic.** No real members, providers, patient information, payer or employer data, or genuine healthcare coding are used.
 
 ## Key finding
 
 On the baseline fixture, summing header payments after joining to claim lines reports **$37,011.02**, while the reconciled payment total is **$15,905.27** — an overstatement of **$21,105.75 (132.70%)**.
 
-That difference is a **reporting distortion caused by incorrect grain handling**. It is not employer savings, recovered money, payer loss, fraud, or a production result. The dollars are synthetic.
+That difference is a **reporting distortion caused by incorrect grain handling** in synthetic data, not employer savings or a production result.
 
 ## Dashboard
 
