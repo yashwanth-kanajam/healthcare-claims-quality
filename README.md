@@ -1,40 +1,34 @@
 # Healthcare Claims Quality & Financial Reconciliation
 
-**A claims reporting pipeline can produce entirely plausible financial totals that are wrong.** This project builds the validation and reconciliation controls that catch that before the numbers reach a report.
+**A claims reporting pipeline can produce financial totals that look plausible and are wrong.** This project builds the validation and reconciliation checks that catch that before the numbers reach a report.
 
 **All data are synthetic.** No real members, providers, patient information, payer or employer data, or genuine healthcare coding are used.
 
 ## Key finding
 
-On the baseline fixture, summing header payments after joining to claim lines reports **$37,011.02**, while the reconciled payment total is **$15,905.27** — an overstatement of **$21,105.75 (132.70%)**.
+On the baseline fixture, summing header payments after joining to claim lines reports **$37,011.02**, while the reconciled payment total is **$15,905.27**, an overstatement of **$21,105.75 (132.70%)**.
 
-That difference is a **reporting distortion caused by incorrect grain handling** in synthetic data, not employer savings or a production result.
+The difference is a reporting error caused by summing at the wrong grain, not savings or a production result.
 
 ## Dashboard
 
 ![Tableau dashboard showing claims financial reconciliation, monthly paid amounts, age-cohort paid per member-month, and validation results using controlled synthetic claims data.](docs/img/claims_dashboard.png)
 
-*Tableau dashboard summarizing financial reconciliation, monthly paid amounts, cohort PMPM, and validation results from the controlled synthetic claims analysis.*
+*Tableau dashboard: financial reconciliation, monthly paid amounts, cohort PMPM and validation results.*
 
-Every plotted value reconciles to the validated source results. Open `dashboard/Claims_Quality_Public.twbx` in Tableau Desktop or Tableau Public to explore it — the package carries its own extract, so no account or upload is required. See the [dashboard notes](dashboard/README.md) for units and interactions.
+Every plotted value reconciles to the source results. Open `dashboard/Claims_Quality_Public.twbx` in Tableau Desktop or Tableau Public; the package carries its own extract, so no account or upload is needed. The [dashboard notes](dashboard/README.md) cover units, interactions and how to rebuild it.
 
 ## Why claims grain matters
 
-A claim has one header carrying its payment, and one or more service lines beneath it. Joining headers to lines repeats the header's payment on every matching row. Summing after that join produces a total at the wrong grain.
+A claim has one header carrying its payment, and one or more service lines beneath it. Joining headers to lines repeats the header's payment on every matching row, and summing after that join gives a total at the wrong grain.
 
-Nothing errors. The query runs, the number is larger, and it looks reasonable. Without an independent reconciliation check, it ships.
+Nothing errors. The query runs, the number is larger, and it looks reasonable. Unless someone reconciles it against another total, it ships.
 
-## Reconciliation controls
+## Reconciliation and quality checks
 
-Three independent paths agree on the correct total: summing at header grain, summing line payments, and aggregating lines to one claim row before joining. **That agreement is the control** — comparing the suspect result against an independent ledger is what catches the error.
+Three separate calculations agree on the correct total: summing at header grain, summing line payments, and aggregating lines to one row per claim before joining. Comparing a reported figure against those totals is what catches the error. `SUM(DISTINCT paid_cents)` is *not* a fix, because different claims can legitimately share a dollar amount.
 
-`SUM(DISTINCT paid_cents)` is *not* a valid correction, because separate claims can legitimately share a dollar amount.
-
-Alongside reconciliation, DuckDB SQL checks cover exact duplicate records, broken foreign keys, and invalid date sequences. Detection reads only raw tables — the expected-defect manifest is held in separate modules and files that detection never touches, so the evaluation cannot mark its own homework. The scenario set also includes valid lookalike cases that resemble defects but are legitimate, which tests over-flagging as well as missed defects.
-
-## Reporting implication
-
-The example shows why payment totals should be reconciled at the correct claim grain before they reach a dashboard or report. Records that fail a quality check are flagged for review rather than included in the validated reporting dataset.
+DuckDB SQL checks also cover exact duplicate records, broken foreign keys and invalid date sequences. Records that fail a check are flagged for review and kept out of the reporting dataset.
 
 ## Data model
 
@@ -46,19 +40,17 @@ The example shows why payment totals should be reconciled at the correct claim g
 | `claim_headers` | One row per claim_id |
 | `claim_lines` | One row per claim_id + line_number |
 
-`record_id` is a physical source-row identifier used for traceability and is excluded from business-record duplicate comparison. Money is **integer cents** throughout — float arithmetic does not reconcile exactly, and exact reconciliation is the entire point. The fixture assumes allowed = paid + patient, billed ≥ allowed, non-negative amounts, and exact header-to-line totals.
-
-An **exact duplicate** repeats every business field including identifiers, and all occurrences are flagged — no arbitrary "first row" is assumed correct. Different claim IDs with identical apparent services are *potential duplicate services requiring review*, not exact-record errors.
+Money is stored as integer cents so totals reconcile exactly. The fixture assumes allowed = paid + patient, billed ≥ allowed, non-negative amounts, and header totals that match their lines. An **exact duplicate** repeats every business field, including identifiers; different claim IDs with the same apparent service are treated as possible duplicate services for review.
 
 See the [data dictionary](docs/DATA_DICTIONARY.md) and [metric definitions](docs/METRIC_DEFINITIONS.md).
 
 ## Methodology
 
-The generator produces a clean baseline, validates invariants against it independently, then injects controlled defects into copies while writing an isolated manifest of what it changed. SQL detection runs against the raw tables; evaluation compares detections to the manifest afterwards. Utilization and cohort analytics run only on the validated clean baseline.
+The generator builds a clean baseline, then injects known defects into copies and records what it changed in a separate file. The SQL checks run on the raw tables without seeing that record, and their flags are scored against it afterwards. The test scenarios also include valid records that look like defects, to measure false positives as well as misses. Utilization and cohort metrics run only on the clean baseline.
 
-Utilization uses explicit enrollment denominators. Member-months count distinct enrolled member/calendar-month combinations, so overlapping coverage cannot double-count. Cohort rates are recomputed as summed numerator over summed denominator — never an unweighted average of two rates.
+Utilization uses enrollment denominators. Member-months count distinct enrolled member/calendar-month combinations, so overlapping coverage is not double-counted, and cohort rates are computed as summed numerator over summed denominator rather than an average of rates.
 
-Further detail: [architecture](docs/ARCHITECTURE.md), [technical notes](docs/TECHNICAL_NOTES.md), [validation protocol](docs/VALIDATION.md).
+More detail: [architecture](docs/ARCHITECTURE.md), [technical notes](docs/TECHNICAL_NOTES.md), [validation protocol](docs/VALIDATION.md).
 
 ## Reproduce
 
@@ -71,27 +63,13 @@ python3 -m venv .venv
 PYTHONPATH=src .venv/bin/python -m claims_quality run --seed 17 --scenario standard --out work/run-17
 ```
 
-`run` produces the clean and dirty datasets, the isolated ground truth, detector flags, an `ISSUES.md` review queue, evaluation metrics, join analytics and a deterministic `run.json`. An existing output directory is refused, so a rerun cannot silently overwrite a previous one.
-
-Installing the package works outside the source checkout, since the SQL resources are bundled:
-
-```sh
-.venv/bin/python -m pip install .
-.venv/bin/claims-quality run --seed 101 --scenario stress --out work/run-101
-.venv/bin/claims-quality review --flags work/run-101/flags.json --out work/run-101/REVIEW.md
-```
-
-`review` reads detector flags only. It groups multiple checks on the same record and explains investigation steps without consulting labels.
-
-Reports contain no timestamps, so identical inputs produce byte-identical outputs. To rebuild the Tableau inputs, install the optional extra with `pip install '.[tableau]'` and run `claims-quality dashboard` followed by `claims-quality tableau-extract`.
+`run` generates the data, runs the checks and writes the flags, an `ISSUES.md` review queue, evaluation metrics and the join analysis. The [technical notes](docs/TECHNICAL_NOTES.md) describe each output, and the [architecture](docs/ARCHITECTURE.md) covers the other commands.
 
 ## Validation
 
-Automated checks cover injected-defect detection, claim-level relationships and foreign-key integrity, financial reconciliation, utilization and cohort metrics, Tableau extract fidelity, and reproducible installation. A separate set runs against the installed package outside the checkout.
+Automated tests cover defect detection, claim relationships and foreign keys, financial reconciliation, utilization and cohort metrics, and the Tableau extract. Across 18 controlled scenarios and 4 seeds, the checks are measured on both missed defects and false alarms. Because the scenarios are generated, these scores do not estimate accuracy on real payer data.
 
-The expanded evaluation runs 18 controlled scenarios across 4 seeds. Held-out seeds vary amounts, dates and defect placement but do not introduce new defect mechanisms, so the controlled scores do not estimate real-world payer accuracy.
-
-Full detail and the reconciled figures: [validation summary](reports/VALIDATION_SUMMARY.md), [measured results](reports/RESULTS.md), [expanded evaluation](reports/expanded/EXPANDED_RESULTS.md), [executive brief](reports/EXECUTIVE_BRIEF.md).
+Results: [validation summary](reports/VALIDATION_SUMMARY.md), [measured results](reports/RESULTS.md), [expanded evaluation](reports/expanded/EXPANDED_RESULTS.md), [executive brief](reports/EXECUTIVE_BRIEF.md).
 
 ## Limitations
 
