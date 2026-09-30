@@ -34,9 +34,7 @@ Alongside reconciliation, DuckDB SQL checks cover exact duplicate records, broke
 
 ## Reporting implication
 
-Establish the reporting grain and the reconciliation checks *before* publishing payment totals. Route quality flags to source investigation rather than deleting or silently repairing records.
-
-Quality output here is an investigation queue. Nothing is auto-corrected, no money is recovered, and dirty data never feeds the business metrics — analytics run only on the validated clean baseline.
+The example shows why payment totals should be reconciled at the correct claim grain before they reach a dashboard or report. Records that fail a quality check are flagged for review rather than included in the validated reporting dataset.
 
 ## Data model
 
@@ -48,7 +46,7 @@ Quality output here is an investigation queue. Nothing is auto-corrected, no mon
 | `claim_headers` | One row per claim_id |
 | `claim_lines` | One row per claim_id + line_number |
 
-`record_id` is a physical source-row identifier used for traceability, deliberately excluded from business-record duplicate comparison. Money is **integer cents** throughout — float arithmetic does not reconcile exactly, and exact reconciliation is the entire point. The fixture assumes allowed = paid + patient, billed ≥ allowed, non-negative amounts, and exact header-to-line totals.
+`record_id` is a physical source-row identifier used for traceability and is excluded from business-record duplicate comparison. Money is **integer cents** throughout — float arithmetic does not reconcile exactly, and exact reconciliation is the entire point. The fixture assumes allowed = paid + patient, billed ≥ allowed, non-negative amounts, and exact header-to-line totals.
 
 An **exact duplicate** repeats every business field including identifiers, and all occurrences are flagged — no arbitrary "first row" is assumed correct. Different claim IDs with identical apparent services are *potential duplicate services requiring review*, not exact-record errors.
 
@@ -64,7 +62,7 @@ Further detail: [architecture](docs/ARCHITECTURE.md), [technical notes](docs/TEC
 
 ## Reproduce
 
-Requires Python 3.11 or newer. Tested on macOS arm64 with Python 3.11.5; other platforms are unverified. No cloud account or database service is needed.
+Requires Python 3.11+.
 
 ```sh
 python3 -m venv .venv
@@ -91,16 +89,14 @@ Reports contain no timestamps, so identical inputs produce byte-identical output
 
 Automated checks cover injected-defect detection, claim-level relationships and foreign-key integrity, financial reconciliation, utilization and cohort metrics, Tableau extract fidelity, and reproducible installation. A separate set runs against the installed package outside the checkout.
 
-The expanded evaluation runs 18 controlled scenarios across 4 seeds. Held-out seeds vary amounts, dates and defect placement, but do not introduce novel defect mechanisms — so controlled scores are **not** estimates of real-world payer accuracy.
+The expanded evaluation runs 18 controlled scenarios across 4 seeds. Held-out seeds vary amounts, dates and defect placement but do not introduce new defect mechanisms, so the controlled scores do not estimate real-world payer accuracy.
 
 Full detail and the reconciled figures: [validation summary](reports/VALIDATION_SUMMARY.md), [measured results](reports/RESULTS.md), [expanded evaluation](reports/expanded/EXPANDED_RESULTS.md), [executive brief](reports/EXECUTIVE_BRIEF.md).
 
 ## Limitations
 
-The fixture is small and deterministic by design, so every expected result can be verified exactly. **It is not a scale claim.**
+The fixture is small and deterministic so that every expected result can be checked exactly; it says nothing about scale. November and December show zero claims because the generator limits service starts to the first 300 days of 2024, and apparent cohort, provider or monthly differences are likewise generator artifacts.
 
-November and December show zero claims because the generator limits service starts to the first 300 days of 2024. That is a property of the fixture, not a seasonal pattern, and must not be read as one. Apparent cohort, provider or monthly differences are likewise generator artifacts.
-
-Claims are not visits, and these outputs should never be relabeled as visit counts. Payment lags are fixed rather than modeled. No real medical adjudication, payer rules, clinical validation, fraud detection, or real-world model performance is represented.
+Claims are counted as claims, not visits, and payment lags are fixed rather than modeled. Real adjudication, payer rules, clinical validation and fraud detection are outside the scope of the fixture.
 
 See [limitations](docs/LIMITATIONS.md) for the full list.
